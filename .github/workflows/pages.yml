@@ -26,16 +26,49 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Check whether Pages is enabled
+        id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          code=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}/pages")
+          echo "Pages API 返回：$code"
+          if [ "$code" = "200" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Pages 未启用时给出提示
+        if: steps.check.outputs.enabled != 'true'
+        run: |
+          {
+            echo "### GitHub Pages 还没启用"
+            echo ""
+            echo "仓库设置里把 Pages 的 Source 选成 **GitHub Actions**，再重新运行本工作流即可："
+            echo ""
+            echo "1. 打开 https://github.com/${{ github.repository }}/settings/pages"
+            echo "2. Build and deployment → Source 选择 **GitHub Actions**"
+            echo "3. 回到 Actions → pages → Run workflow"
+            echo ""
+            echo "站点内容在 \`site/\`，启用后地址是 https://$(echo '${{ github.repository_owner }}' | tr '[:upper:]' '[:lower:]').github.io/$(basename ${{ github.repository }})/"
+          } >> "$GITHUB_STEP_SUMMARY"
+          echo "Pages 未启用，跳过部署（见 job summary）"
+
       - name: Configure Pages
+        if: steps.check.outputs.enabled == 'true'
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - name: Upload site
+        if: steps.check.outputs.enabled == 'true'
         uses: actions/upload-pages-artifact@v3
         with:
           path: site
 
       - name: Deploy
+        if: steps.check.outputs.enabled == 'true'
         id: deployment
         uses: actions/deploy-pages@v4
