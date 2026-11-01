@@ -1,0 +1,35 @@
+name: tests
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Python ${{ matrix.python-version }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ["3.8", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Run unit tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Check the CLI can read every demo format
+        run: |
+          python tools/wechat_md.py --list-formats
+          python tools/wechat_md.py examples/bear.md -o "${{ runner.temp }}/out.md" --html "${{ runner.temp }}/out.html"
+          python tools/wechat_md.py examples/code_demo.md -o "${{ runner.temp }}/code.md"
+
+      - name: Validate prompt sample
+        run: python tools/check_prompt_output.py examples/prompt_sample.md

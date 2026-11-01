@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>公众号排版模板（可直接粘贴）</title>
+<style>
+  /* 只影响本预览页，不会被粘进公众号 */
+  body { margin: 0; padding: 24px; background: #f5f6f8; font-family: "PingFang SC", "Microsoft YaHei", sans-serif; }
+  .phone { width: 375px; margin: 0 auto; background: #fff; padding: 20px 16px 40px; box-shadow: 0 2px 16px rgba(0,0,0,.08); border-radius: 10px; }
+  .note { width: 720px; max-width: 92vw; margin: 0 auto 18px; font-size: 13px; line-height: 1.8; color: #555; background: #fff; border-left: 3px solid #2F6FD0; padding: 12px 16px; border-radius: 4px; }
+  .note code { background: #f0f2f5; padding: 1px 5px; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="note">
+  <b>怎么用：</b>用浏览器打开本文件 → 选中虚线框<b>内部</b>的全部内容（从「标题」到最后一个方块）→ <code>Ctrl+C</code> → 公众号后台正文编辑区 <code>Ctrl+V</code>。<br>
+  粘贴后请检查：① 小标题左侧竖条是否保留；② 结论卡片的浅蓝底色是否保留；③ 图片需在微信编辑器里重新上传（外链图会被过滤）。<br>
+  颜色与字号是「趣闻寻录」的固定规范，替换文字时<b>不要改样式</b>，改完就是统一版式。
+</div>
+
+<div class="phone">
+
+<!-- ======================= 粘贴区开始 ======================= -->
+
+<!-- 标题（公众号后台有独立标题栏，这里放正文首行大标题，二选一，建议留后台标题栏、删这里） -->
+<section style="margin: 0 0 10px;">
+  <span style="font-size: 21px; font-weight: bold; color: #1a1a1a; line-height: 1.45;">【标题】这里放你的标题，不超过 30 字</span>
+</section>
+
+<!-- 元信息：日期 + 字数 + 阅读时长 -->
+<p style="margin: 0 0 18px; font-size: 12px; color: #999; line-height: 1.6;">2026-10-16 &nbsp;·&nbsp; 全文 1200 字 &nbsp;·&nbsp; 约 4 分钟</p>
+
+<!-- 结论卡片：放 3 条，每条一行以内 -->
+<section style="margin: 0 0 24px; padding: 14px 16px; background: #EAF1FC; border-radius: 8px;">
+  <p style="margin: 0 0 8px; font-size: 13px; font-weight: bold; color: #2F6FD0; line-height: 1.6;">先说结论</p>
+  <p style="margin: 0; font-size: 14px; color: #333; line-height: 1.75;">· 结论一，一句话说清发生了什么</p>
+  <p style="margin: 0; font-size: 14px; color: #333; line-height: 1.75;">· 结论二，说清最反常识的细节</p>
+  <p style="margin: 0; font-size: 14px; color: #333; line-height: 1.75;">· 结论三，给读者一个可执行的动作</p>
+</section>
+
+<!-- 正文段：16px / 1.75 / 段后 16px / 不缩进 / 左对齐 -->
+<p style="margin: 0 0 16px; font-size: 16px; line-height: 1.75; color: #333; text-align: left;">这里放正文第一段。单段控制在 3 行以内（约 55 字），超过就在分号或破折号处拆成两段——手机上超过 5 行的段落，读者会直接跳过。</p>
+
+<p style="margin: 0 0 16px; font-size: 16px; line-height: 1.75; color: #333; text-align: left;">这里放正文第二段。中文不要两端对齐，会拉出难看的字距；也不要加 text-indent，微信编辑器本身已经处理了段落缩进，再缩一次就是"双缩进"。</p>
+
+<!-- 01 一级小标题：左竖条 + 主色编号 + 左对齐 -->
+<section style="margin: 28px 0 12px; padding-left: 10px; border-left: 3px solid #2F6FD0;">
+  <p style="margin: 0; font-size: 17px; font-weight: bold; line-height: 1.5; color: #1a1a1a; text-align: left;"><span style="color: #2F6FD0;">01</span>&nbsp;&nbsp;小标题写事实或悬念，不超过 20 字</p>
+</section>
+
+<p style="margin: 0 0 16px; font-size: 16px; line-height: 1.75; color: #333; text-align: left;">小标题下的正文。关键事实用加粗（全文控制在 5 处以内）：<strong style="color: #1a1a1a;">这一吃，就是 5 个小时</strong>。</p>
+
+<!-- 配图位：粘贴后删掉这个占位块，用微信「图片」按钮插入真图（16:9 或 4:3，宽度≥1080px） -->
+<section style="margin: 20px 0 6px; padding: 36px 0; background: #F2F4F7; border-radius: 4px; text-align: center;">
+  <span style="font-size: 12px; color: #9AA3AD;">配图位：1080×608（16:9）｜在此插入图片</span>
+</section>
+<p style="margin: 0 0 24px; font-size: 12px; color: #888; line-height: 1.6; text-align: center;">▲ 画面说明：谁、在做什么、证明了什么。图源：XXX</p>
+
+<!-- 引用块：专家原话 / 关键引语，用浅底代替引号 -->
+<section style="margin: 0 0 20px; padding: 12px 16px; background: #F7F8FA; border-left: 3px solid #D9DEE6; border-radius: 2px;">
+  <p style="margin: 0; font-size: 15px; line-height: 1.75; color: #555;">"这里放专家原话或关键引语。引用块的存在感来自底色和缩进，不需要再加引号装饰。"</p>
+</section>
+
+<!-- 02 一级小标题 -->
+<section style="margin: 28px 0 12px; padding-left: 10px; border-left: 3px solid #2F6FD0;">
+  <p style="margin: 0; font-size: 17px; font-weight: bold; line-height: 1.5; color: #1a1a1a; text-align: left;"><span style="color: #2F6FD0;">02</span>&nbsp;&nbsp;第二个小标题</p>
+</section>
+
+<p style="margin: 0 0 16px; font-size: 16px; line-height: 1.75; color: #333; text-align: left;">正文继续。建议把"最该被记住的一句话"单独成段，用主色加粗，作为视觉锚点：</p>
+
+<p style="margin: 0 0 20px; font-size: 16px; line-height: 1.75; color: #2F6FD0; font-weight: bold; text-align: left;">尤其钟情巧克力和焦糖糖浆，专挑甜的、香的下嘴。</p>
+
+<!-- 列表型内容：用项目符号字符，不用 ol/ul（公众号里列表样式会被重置） -->
+<section style="margin: 0 0 20px;">
+  <p style="margin: 0 0 8px; font-size: 16px; line-height: 1.75; color: #333;">遇到熊，记住三件事：</p>
+  <p style="margin: 0 0 8px; font-size: 16px; line-height: 1.75; color: #333; padding-left: 1em;">①&nbsp;别堵：给它让出一条能离开的路</p>
+  <p style="margin: 0 0 8px; font-size: 16px; line-height: 1.75; color: #333; padding-left: 1em;">②&nbsp;别喂：投喂只会让它下次还来</p>
+  <p style="margin: 0 0 8px; font-size: 16px; line-height: 1.75; color: #333; padding-left: 1em;">③&nbsp;慢退：别大喊大叫，退到安全处再报警</p>
+</section>
+
+<!-- 收束：一句金句单独成段，主色加粗 -->
+<section style="margin: 28px 0 24px; padding: 16px; background: #EAF1FC; border-radius: 8px;">
+  <p style="margin: 0; font-size: 16px; line-height: 1.75; color: #2F6FD0; font-weight: bold; text-align: center;">熊来不来是它的事，咱们先别给它留菜单。</p>
+</section>
+
+<!-- 分隔线：1px 细线，全文只用 1–2 条 -->
+<section style="margin: 0 0 24px; text-align: center;">
+  <span style="display: inline-block; width: 40px; height: 1px; background: #E5E5E5;"></span>
+</section>
+
+<!-- 互动提问：最后出现，需要读者动手 -->
+<p style="margin: 0 0 24px; font-size: 15px; line-height: 1.75; color: #555; text-align: left;">你觉得这熊"开冰箱"的动作熟不熟？像惯犯的扣 1，学到"食物要收好"的扣 2，记住"别堵别喂"的扣 3。</p>
+
+<!-- 关注引导：图 + 两行字，二选一，不要图文重复 -->
+<section style="margin: 0 0 10px; padding: 28px 0; background: #F2F4F7; border-radius: 6px; text-align: center;">
+  <span style="font-size: 12px; color: #9AA3AD;">关注引导图位：1080×520｜在此插入图片</span>
+</section>
+<p style="margin: 0 0 4px; font-size: 13px; line-height: 1.7; color: #888; text-align: center;">关注「趣闻寻录」，每天一个新鲜事</p>
+<p style="margin: 0; font-size: 13px; line-height: 1.7; color: #888; text-align: center;">不花钱、不扣钱，只占你 3 分钟</p>
+
+<!-- ======================= 粘贴区结束 ======================= -->
+
+</div>
+</body>
+</html>

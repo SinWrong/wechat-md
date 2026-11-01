@@ -1,0 +1,20 @@
+# 忽略 Python 缓存
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# 编辑器 / 系统
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 沙箱 / 调试产物
+.acl-reports/
+*.log
+
+# 运行产物（示例里的 *_模板.md 是刻意保留的样例，不要忽略）
+*.tmp
