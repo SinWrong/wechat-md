@@ -46,7 +46,14 @@
 ### 测试与 CI
 
 - `tests/` 5 个文件、70 项测试：解析渲染、多格式转换、模板往返、提示词校验、插件特性；
-- `.github/workflows/tests.yml`：Ubuntu + Windows × Python 3.8 / 3.11 / 3.12。
+- `.github/workflows/tests.yml`：Ubuntu + Windows × Python 3.8 / 3.11 / 3.12；
+- `.github/workflows/build-exe.yml`：打 tag 时用 PyInstaller 构建 `wechat-md-gui.exe` 与 `wechat-md.exe`，
+  压缩成 `wechat-md-windows-x64.zip` 并附到 Release。
+
+### 发布
+
+- Release：<https://github.com/SinWrong/wechat-md/releases/tag/v0.1.0>
+- 文档站：<https://sinwrong.github.io/wechat-md/>（`site/`，由 `.github/workflows/pages.yml` 部署）
 
 ### 已知限制
 
