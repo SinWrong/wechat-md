@@ -1,0 +1,72 @@
+name: build-exe
+
+on:
+  push:
+    tags: ["v*"]
+    branches: [main]
+    paths:
+      - "tools/**"
+      - ".github/workflows/build-exe.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install build deps
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pyinstaller pillow
+
+      - name: Build GUI exe
+        run: |
+          pyinstaller --noconfirm --clean --onefile --windowed `
+            --name wechat-md-gui `
+            --paths tools `
+            --hidden-import convert --hidden-import wechat_md --hidden-import gui_core `
+            --hidden-import PIL._tkinter_finder `
+            tools/wechat_md_gui.py
+
+      - name: Build CLI exe
+        run: |
+          pyinstaller --noconfirm --clean --onefile --console `
+            --name wechat-md `
+            --paths tools `
+            --hidden-import convert --hidden-import wechat_md `
+            tools/wechat_md.py
+
+      - name: Smoke test the CLI exe
+        run: |
+          .\dist\wechat-md.exe --list-formats
+          .\dist\wechat-md.exe examples\bear.md -o "${{ runner.temp }}\out.md" --html "${{ runner.temp }}\out.html"
+          if (!(Test-Path "${{ runner.temp }}\out.md")) { throw "CLI 没有生成输出" }
+
+      - name: Package
+        run: |
+          New-Item -ItemType Directory -Force -Path package | Out-Null
+          Copy-Item dist\wechat-md-gui.exe, dist\wechat-md.exe package\
+          Copy-Item README.md, LICENSE package\
+          Compress-Archive -Path package\* -DestinationPath wechat-md-windows-x64.zip
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: wechat-md-windows-x64
+          path: wechat-md-windows-x64.zip
+          if-no-files-found: error
+
+      - name: Attach to release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: wechat-md-windows-x64.zip
+          generate_release_notes: false

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>wechat-md · 公众号排版工具</title>
+<meta name="description" content="把文案 + 图片变成公众号能直接用的排版：Markdown 模板、可粘贴 HTML、桌面编辑器与发布前体检。零依赖，Python 3.8+。">
+<meta property="og:title" content="wechat-md · 公众号排版工具">
+<meta property="og:description" content="文案 + 图片 → Markdown 模板 / 可粘贴 HTML，带桌面编辑器、实时预览与发布前体检。">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📐</text></svg>">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#">wechat-md</a>
+    <nav>
+      <a href="#features">功能</a>
+      <a href="#start">快速开始</a>
+      <a href="#output">三种产物</a>
+      <a href="#docs">文档</a>
+      <a class="gh" href="https://github.com/SinWrong/wechat-md">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">公众号排版工具 · 零依赖</p>
+      <h1>把文案排成<br><em>同一套版式</em></h1>
+      <p class="lede">
+        写好的文案 + 配图，一键生成 Markdown 模板和可粘贴进公众号后台的 HTML。
+        编号、间距、图注、结尾三件套由程序统一，不用每篇重排。
+      </p>
+      <div class="cta">
+        <a class="btn primary" href="https://github.com/SinWrong/wechat-md">查看仓库</a>
+        <a class="btn" href="#start">快速开始</a>
+      </div>
+      <ul class="facts">
+        <li><b>3</b><span>套主题</span></li>
+        <li><b>4</b><span>种输入格式</span></li>
+        <li><b>70</b><span>项测试</span></li>
+        <li><b>0</b><span>第三方依赖</span></li>
+      </ul>
+    </div>
+    <figure class="hero-shot">
+      <img src="assets/preview.png" alt="编辑器界面：左侧写稿，右侧手机宽度预览" loading="lazy">
+      <figcaption>左边写稿，右边实时手机预览</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="features" class="section">
+  <div class="wrap">
+    <h2>它解决什么问题</h2>
+    <p class="section-lede">公众号后台只能一段段调样式，长文排版有三个麻烦：</p>
+    <div class="grid three">
+      <article class="card">
+        <h3>样式不统一</h3>
+        <p>今天 16px、明天 17px，小标题一会儿加粗一会儿变色。模板把字号、行高、间距、字距固定下来。</p>
+      </article>
+      <article class="card">
+        <h3>图注对不上</h3>
+        <p>图片和图注散架、来源丢失。程序用 <code>figure + figcaption</code> 把图注焊在图上。</p>
+      </article>
+      <article class="card">
+        <h3>换个来源就要重排</h3>
+        <p>Word、网页、AI 复制来的内容格式全乱。支持 <code>.docx</code>、<code>.html</code>（含公众号文章页）直接导入。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="wrap split">
+    <div>
+      <h2>排版细节</h2>
+      <ul class="checklist">
+        <li>正文 16px / 行高 1.75 / 段后 16px / 字距 0.2–0.5px</li>
+        <li>小标题三种样式：左竖条、下划线、居中</li>
+        <li>结论卡、引用块、收束卡统一配色</li>
+        <li>图片语义化，图注 12px 灰色居中</li>
+        <li>列表输出真正的 <code>ul/li</code>，不是 ①②③ 文本</li>
+        <li>代码块深色底、等宽字体、自动换行</li>
+        <li>发布前体检：编号重复、图注缺失、段落过长</li>
+      </ul>
+    </div>
+    <figure class="shot">
+      <img src="assets/before-after.png" alt="排版前后对比：左侧拥挤无层级，右侧分组清晰" loading="lazy">
+      <figcaption>同一篇内容：左侧是随手排的，右侧是模板排的</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="start" class="section">
+  <div class="wrap">
+    <h2>快速开始</h2>
+    <p class="section-lede">需要 Python 3.8+，不装任何第三方包（GUI 预览 JPG 可选 Pillow）。</p>
+    <div class="code">
+      <div class="code-head"><span>终端</span></div>
+<pre><code>git clone git@github.com:SinWrong/wechat-md.git
+cd wechat-md
+
+# 文案 → 模板 + 可粘贴 HTML
+python tools/wechat_md.py examples/bear.md -o 输出.md --html 输出.html
+
+# 直接读网页 / Word
+python tools/wechat_md.py 文章.html -o 输出.md
+python tools/wechat_md.py 稿子.docx -o 输出.md --summary
+
+# 桌面编辑器（Windows 可双击 wechat_md_gui.bat）
+python tools/wechat_md_gui.py examples/bear.md</code></pre>
+    </div>
+    <p class="hint">Windows 下也可以把文件拖到 <code>wechat_md.bat</code> 上。</p>
+  </div>
+</section>
+
+<section id="output" class="section alt">
+  <div class="wrap">
+    <h2>三种产物</h2>
+    <div class="grid three">
+      <article class="card">
+        <h3><code>*_模板.md</code></h3>
+        <p>继续改文案用。带模板说明、排版参数表、发布前自检清单。</p>
+      </article>
+      <article class="card">
+        <h3><code>*_可粘贴.html</code></h3>
+        <p>浏览器打开 → 全选复制 → 公众号后台正文粘贴。图片在后台重新上传。</p>
+      </article>
+      <article class="card">
+        <h3>手机预览页</h3>
+        <p><code>--preview</code> 生成，375px 宽，发布前先看效果。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="docs" class="section">
+  <div class="wrap">
+    <h2>文档</h2>
+    <ul class="doclist">
+      <li><a href="https://github.com/SinWrong/wechat-md/blob/main/tools/README.md">使用说明</a><span>输入格式、参数、图片模式、输出结构</span></li>
+      <li><a href="https://github.com/SinWrong/wechat-md/blob/main/docs/format-guideline.md">排版规范</a><span>字号、行高、间距、图注的取值依据</span></li>
+      <li><a href="https://github.com/SinWrong/wechat-md/blob/main/docs/preview-rendering.md">预览实现</a><span>为什么用 Canvas + 固定页宽</span></li>
+      <li><a href="https://github.com/SinWrong/wechat-md/blob/main/prompts/README.md">AI 提示词</a><span>让模型直接产出可导入的文案</span></li>
+      <li><a href="https://github.com/SinWrong/wechat-md/blob/main/CHANGELOG.md">更新日志</a><span>v0.1.0</span></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>MIT License · SinWrong</span>
+    <a href="https://github.com/SinWrong/wechat-md">GitHub</a>
+  </div>
+</footer>
+
+</body>
+</html>

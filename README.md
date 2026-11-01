@@ -7,6 +7,8 @@
 
 把「文案 + 图片」变成公众号能直接用的排版：离线生成 Markdown 模板和可粘贴 HTML，带桌面编辑器、格式校验和 AI 提示词。
 
+**文档站**：https://sinwrong.github.io/wechat-md/ ｜ **下载 Windows 版**：见 [Releases](https://github.com/SinWrong/wechat-md/releases)（无需装 Python）
+
 ![编辑器预览](docs/images/preview.png)
 
 ## 它解决什么问题
@@ -128,6 +130,7 @@ tools/
 prompts/                给大模型的提示词（完整版 + 精简版）
 examples/               各格式输入样例与生成结果
 templates/              可粘贴的 HTML 排版模板
+site/                   文档站（GitHub Pages）
 docs/                   设计说明：排版规范、预览实现、插件参考、模板对比
 tests/                  70 项回归测试
 ```
