@@ -1,5 +1,10 @@
 # wechat-md · 公众号排版工具
 
+[![tests](https://github.com/SinWrong/wechat-md/actions/workflows/tests.yml/badge.svg)](https://github.com/SinWrong/wechat-md/actions/workflows/tests.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/)
+[![零依赖](https://img.shields.io/badge/dependencies-stdlib%20only-brightgreen.svg)](#)
+
 把「文案 + 图片」变成公众号能直接用的排版：离线生成 Markdown 模板和可粘贴 HTML，带桌面编辑器、格式校验和 AI 提示词。
 
 ![编辑器预览](docs/images/preview.png)
@@ -142,6 +147,8 @@ python tools/wechat_md_gui.py --selftest   # 无窗口跑一遍编辑器链路
 - [预览渲染实现](docs/preview-rendering.md)：为什么用 Canvas + 固定页宽
 - [参考插件改造](docs/plugin-reference.md)：吸收了哪些排版细节、哪些没做
 - [模板对比](docs/template-diff.md)：生成物再编辑时容易踩的坑
+- [仓库 About 建议](docs/repo-about.md)：description / topics 怎么填
+- [更新日志](CHANGELOG.md)
 
 ## 已知限制
 
@@ -149,6 +156,10 @@ python tools/wechat_md_gui.py --selftest   # 无窗口跑一遍编辑器链路
 - `.doc`（旧版 Word）不支持，请先另存为 `.docx`；
 - 预览是模拟渲染，最终效果以后台保存后的手机预览为准；
 - 只处理排版，不做 AI 写作（配了提示词，但模型调用在你自己的工具里）。
+
+## 更新日志
+
+见 [CHANGELOG.md](CHANGELOG.md)，当前版本 v0.1.0。
 
 ## License
 
